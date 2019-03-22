@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Informacion implements Serializable {
 
-    private String Nombre, IP, Mensaje;
+    private String Nombre, Mensaje;
 
     public Informacion() {
     }
@@ -15,14 +15,6 @@ public class Informacion implements Serializable {
 
     public void setNombre(String nombre) {
         Nombre = nombre;
-    }
-
-    public String getIP() {
-        return IP;
-    }
-
-    public void setIP(String IP) {
-        this.IP = IP;
     }
 
     public String getMensaje() {
