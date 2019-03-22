@@ -1,4 +1,4 @@
-package cliente;
+package Servidor;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,12 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class cliente extends Application {
+public class Servidor extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("clienteGUI.fxml"));
-        primaryStage.setTitle("Hello World");
+        Parent root = FXMLLoader.load(getClass().getResource("ServidorGUI.fxml"));
+        primaryStage.setTitle("Servidor");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
