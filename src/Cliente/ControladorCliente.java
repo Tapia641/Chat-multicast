@@ -1,6 +1,5 @@
 package Cliente;
 
-import Servidor.MulticastServidor;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -11,11 +10,10 @@ import javafx.scene.control.TextInputDialog;
 
 import java.io.IOException;
 import java.net.*;
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ControladorCliente implements Runnable  {
+public class ControladorCliente implements Initializable {
 
     public static final String IP = "230.0.0.0";
     public static final Integer PORT = 4321;
@@ -28,37 +26,37 @@ public class ControladorCliente implements Runnable  {
     @FXML
     Label NombrePanel;
 
+    public ControladorCliente() {
+    }
+
+    public String getNombrePanel() {
+        return NombrePanel.getText();
+    }
+
+    public void setNombrePanel(String Nombre){
+        NombrePanel.setText(Nombre);
+    }
+
+    public void addTextChat(String text){
+        AreaTexto.setText(text);
+
+    }
 
     @FXML
     public void ClickEnviar(javafx.scene.input.MouseEvent event) throws IOException {
-        MandaMensaje(EntradaMensaje.getText(), IP, PORT);
-        AreaTexto.appendText("\n" + "Yo: " + EntradaMensaje.getText());
+        String TextoCompleto = NombrePanel.getText() + ": " + EntradaMensaje.getText();
+        MandaMensaje(TextoCompleto, IP, PORT);
+        AreaTexto.appendText("\n" + TextoCompleto);
         EntradaMensaje.setText("");
     }
 
-    public void receiveUDPMessage(String ip, int port) throws
-            IOException {
-        byte[] buffer = new byte[1024];
-        MulticastSocket socket = new MulticastSocket(PORT);
-        InetAddress group = InetAddress.getByName(IP);
-        socket.joinGroup(group);
-        while (true) {
-            System.out.println("Esperando mensajes...");
-            DatagramPacket packet = new DatagramPacket(buffer, buffer.length);
-            socket.receive(packet);
-            String msg = new String(packet.getData(), packet.getOffset(), packet.getLength());
-            System.out.println(msg);
-            socket.send(packet);
-        }
-    }
-    public static void MandaMensaje(String message, String ipAddress, int port) throws IOException {
+
+    public void MandaMensaje(String message, String ipAddress, int port) throws IOException {
         DatagramSocket socket = new DatagramSocket();
         InetAddress group = InetAddress.getByName(ipAddress);
 
-        /**/
         byte[] msg = message.getBytes();
-        DatagramPacket packet = new DatagramPacket(msg, msg.length,
-                group, port);
+        DatagramPacket packet = new DatagramPacket(msg, msg.length, group, port);
         socket.send(packet);
         socket.close();
     }
@@ -82,15 +80,10 @@ public class ControladorCliente implements Runnable  {
             }
         }
 
-
     }
 
     @Override
-    public void run() {
-        try {
-            receiveUDPMessage(IP, PORT);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
+    public void initialize(URL location, ResourceBundle resources) {
+        NombrePanel.setText(PedirNombre());
     }
 }
