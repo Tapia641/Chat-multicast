@@ -1,5 +1,6 @@
 package Servidor;
 
+import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -16,19 +17,19 @@ public class ControladorServidor implements Initializable {
     public static final Integer PORT = 4321;
 
     @FXML
+    JFXTextArea AreaTexto;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            receiveUDPMessage(IP, PORT);
+            receiveUDPMessage();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-    public void receiveUDPMessage(String ip, int port) throws
-            IOException {
+    public void receiveUDPMessage() throws IOException {
         byte[] buffer = new byte[1024];
         MulticastSocket socket = new MulticastSocket(PORT);
         InetAddress group = InetAddress.getByName(IP);
@@ -39,8 +40,8 @@ public class ControladorServidor implements Initializable {
             socket.receive(packet);
             String msg = new String(packet.getData(), packet.getOffset(), packet.getLength());
             System.out.println(msg);
-
-            socket.send(packet);
+            AreaTexto.appendText("\n" + msg);
+            //socket.send(packet);
         }
     }
 

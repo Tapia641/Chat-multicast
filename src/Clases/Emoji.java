@@ -4,12 +4,13 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.*;
-import java.awt.image.BufferedImage;
-import java.awt.*;
+import java.io.File;
 
 public class Emoji extends JEditorPane {
 
-    static ImageIcon SMILE_IMG = createImage();
+    static ImageIcon SMILE_IMG = new ImageIcon(new File("src/Imagenes/slightly-smiling-face_1f642.png").getAbsolutePath());
+    static ImageIcon ENOJADO = new ImageIcon(new File("src/Imagenes/angry-face_1f620.png").getAbsolutePath());
+
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Autoreplace :) with Smiles images example");
@@ -75,25 +76,7 @@ public class Emoji extends JEditorPane {
     }
 
     static ImageIcon createImage() {
-        BufferedImage res = new BufferedImage(17, 17, BufferedImage.TYPE_INT_ARGB);
-        Graphics g = res.getGraphics();
-        ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g.setColor(Color.yellow);
-        g.fillOval(0, 0, 16, 16);
-
-        g.setColor(Color.black);
-        g.drawOval(0, 0, 16, 16);
-
-        g.drawLine(4, 5, 6, 5);
-        g.drawLine(4, 6, 6, 6);
-
-        g.drawLine(11, 5, 9, 5);
-        g.drawLine(11, 6, 9, 6);
-
-        g.drawLine(4, 10, 8, 12);
-        g.drawLine(8, 12, 12, 10);
-        g.dispose();
-
-        return new ImageIcon(res);
+        ImageIcon res = new ImageIcon(new File("src/Imagenes/worried-face_1f61f.png").getAbsolutePath());
+        return res;
     }
 }

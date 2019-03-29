@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
@@ -11,9 +12,8 @@
 <AnchorPane prefHeight="605.0" prefWidth="419.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Cliente.ControladorCliente">
    <children>
       <JFXButton fx:id="BotonEnviar" layoutX="328.0" layoutY="539.0" onMouseClicked="#ClickEnviar" text="Enviar" />
-      <JFXTextArea fx:id="AreaTexto" layoutX="14.0" layoutY="107.0" prefHeight="412.0" prefWidth="399.0" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="107.0" />
       <JFXTextField fx:id="EntradaMensaje" layoutX="12.0" layoutY="539.0" prefHeight="31.0" prefWidth="274.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="539.0" />
-      <Pane layoutX="18.0" layoutY="20.0" prefHeight="137.0" prefWidth="1920.0" styleClass="head-background" stylesheets="@style.css" AnchorPane.bottomAnchor="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutY="16.0" prefHeight="119.0" prefWidth="419.0" styleClass="head-background2" stylesheets="@style.css" AnchorPane.bottomAnchor="470.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="16.0">
          <children>
             <Label fx:id="NombrePanel" layoutX="14.0" layoutY="14.0" text="Nombre" textFill="WHITE">
                <font>
@@ -27,5 +27,13 @@
             </Label>
          </children>
       </Pane>
+      <Pane layoutY="129.0" prefHeight="31.0" prefWidth="419.0" styleClass="head-background3" stylesheets="@style.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Pane layoutY="-1.0" prefHeight="19.0" prefWidth="419.0" styleClass="head-background1" stylesheets="@style.css" />
+      <JFXTextArea fx:id="AreaTexto" layoutX="14.0" layoutY="169.0" prefHeight="158.0" prefWidth="399.0" AnchorPane.bottomAnchor="278.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="169.0" />
+      <ScrollPane fx:id="scroll" layoutX="48.0" layoutY="432.0" prefHeight="77.0" prefWidth="298.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

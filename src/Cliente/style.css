@@ -1,4 +1,14 @@
-.head-background
+.head-background1
 {
-    -fx-background-color: linear-gradient(to left,#448AFF,#303F9F);
+    -fx-background-color: #183661;
+}
+
+.head-background2
+{
+    -fx-background-color: #1c4b82;
+}
+
+.head-background3
+    {
+    -fx-background-color: #dd6b4d;
 }
